@@ -307,6 +307,11 @@ function(apply_default_standard_properties TARGET)
 
             -Wno-unsafe-buffer-usage             # This is dumb.
 
+            # This needs investigation. The Windows build /works/ when we
+            # ignore this warning -- need to see if it still works when we
+            # fix issues that this warning notifies us of.
+            -Wno-dll-attribute-on-redeclaration
+
             # Sometimes, we need to cast.
             -Wno-incompatible-pointer-types-discards-qualifiers
 
