@@ -83,3 +83,8 @@ readability-uniqueptr-delete-release"
 
 # Other stuff :)
 WarningsAsErrors: "*"
+
+# TODO Delete this after upgrading to clang-18
+# https://github.com/llvm/llvm-project/issues/67380
+ExtraArgs:
+  - -Wno-unknown-pragmas  # TODO: remove this after switch to clang-tidy-18
