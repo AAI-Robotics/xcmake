@@ -87,3 +87,6 @@ WarningsAsErrors: "*"
 # https://github.com/llvm/llvm-project/issues/67380
 ExtraArgs:
   - -Wno-unknown-pragmas  # TODO: remove this after switch to clang-tidy-18
+
+ExtraArgsBefore:
+  - -Wno-missing-template-arg-list-after-template-kw
