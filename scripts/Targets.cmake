@@ -322,6 +322,9 @@ function(apply_default_standard_properties TARGET)
             # Extensions we need.
             -Wno-bit-int-extension # Not in C++ yet.
 
+	    # speclib regularly omits the <> after template
+	    -Wno-missing-template-arg-list-after-template-kw
+
             # Warnings that appear to be broken.
             -Wno-weak-template-vtables           # Incorrectly warns about explicit instantiations in .cpp.
             -Wno-weak-vtables
