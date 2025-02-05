@@ -27,7 +27,7 @@ else()
         LIBRARIES         ${GT_PRODUCTS}
     )
     if (BUILD_SHARED_LIBS)
-        install(TARGETS ${GT_PRODUCTS} EP_TARGET)
+        install(TARGETS ${GT_PRODUCTS} EP_TARGET NAMELINK_SKIP)
     endif()
 
     target_link_libraries(gtest INTERFACE RAW ${CMAKE_DL_LIBS})
