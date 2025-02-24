@@ -27,7 +27,14 @@ else()
         LIBRARIES         ${GT_PRODUCTS}
     )
     if (BUILD_SHARED_LIBS)
-        install(TARGETS ${GT_PRODUCTS} EP_TARGET NAMELINK_SKIP)
+        foreach (GT_PRODUCT IN LISTS GT_PRODUCTS)
+            # Ensure actual shared libraries are installed, not just symlinks
+            # Without this, only (dead) symlinks are installed. Perhaps one of these properties is being
+            # set somewhere it shouldn't be -- so reset them here.
+            set_property(TARGET ${GT_PRODUCT} PROPERTY VERSION)
+            set_property(TARGET ${GT_PRODUCT} PROPERTY SOVERSION)
+        endforeach ()
+        install(TARGETS ${GT_PRODUCTS} EP_TARGET)
     endif()
 
     target_link_libraries(gtest INTERFACE RAW ${CMAKE_DL_LIBS})
